@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Delivery Dash</title>
+<link rel="stylesheet" href="style.css"></head><body>
+<canvas id="gl"></canvas><div id="vig"></div>
+<div id="live" aria-live="polite" style="position:absolute;left:-999px"></div>
+<section class="scr on" id="menu" aria-label="Main menu">
+<h1>DELIVERY DASH</h1><p class="sub">Remember the Route. Deliver on Time.</p>
+<p><span class="chip" id="wal">₹0</span> <span class="chip" id="mc">Missions: 0</span></p>
+<button class="btn" id="go">START DELIVERY</button><button class="btn alt" id="garb">🔧 GARAGE</button>
+<div class="row"><label><input type="checkbox" id="snd"> Sound</label><label><input type="checkbox" id="eng"> Engine hum</label><label><input type="checkbox" id="mu"> Music</label>
+<label>Difficulty <select id="df"><option value="easy">Easy · ₹300</option><option value="normal">Normal · ₹500</option><option value="hard">Hard · ₹800</option></select></label>
+<label>Graphics <select id="ql"><option value="auto">Auto</option><option value="low">Low</option><option value="med">Med</option><option value="high">High</option></select></label></div>
+<details><summary>How to play</summary><p class="sm" style="max-width:none">Memorize the map for 5 seconds. Then ride a three-lane road: press Left/A or Right/D, swipe, or tap the buttons to change lanes and dodge obstacles. When the timer bar appears, the same controls turn you left or right instead. Traffic drives with and against you, cars cross the road without warning and some are halted with hazard lights. Collect coins for tips, grab power-ups (🛡️ shield, ⏳ chill, 🧲 magnet) and pass cars closely to build a combo that boosts your bonus. The ride gets much faster after every turn, with denser traffic and shorter turn windows. Your bike can take two hits (obstacles or the wall). After a hit it blinks and is protected for a moment, and health recovers after a few seconds. A second hit before it recovers, or a wrong turn, ends the run. You can turn any time until you reach the wall. Finish every turn to deliver and earn the reward for your difficulty (Easy ₹300, Normal ₹500, Hard ₹800); harder levels are faster with more traffic.</p></details>
+<p class="sm">₹ is virtual in-game currency with no real-world value.</p>
+<p class="sm" style="font-size:11px">3D models: “Stylized Car” by Split Studios (Sketchfab); “The Old Curiosity Shop 2024” by artfletch and “Lowpoly City Street Pack” by haykel-shaba (Sketchfab, CC BY 4.0).</p>
+<button class="btn alt" id="rs" style="font-size:13px;padding:6px 14px;min-height:32px">Reset progress</button>
+</section>
+<section class="scr" id="prev" aria-label="Route preview">
+<p id="pt" style="font-size:22px;font-weight:800"></p><div id="cd" aria-hidden="true">5</div>
+<canvas id="map" width="640" height="460"></canvas><div id="seq"></div>
+<p class="sm">Memorize the route. You won’t see the map during the run!</p><p class="sm" id="tut"></p></section>
+<div id="hud"><div id="top"><span id="hm"></span><span id="ht"></span><div id="pb"><div id="pf"></div></div><span id="hr">₹500</span></div><div id="hp"><i></i><i></i></div><div id="tp"></div><div id="cmb"></div><div id="pu"></div><div id="wn"></div><div id="pop"></div>
+<div id="amb">INTERSECTION AHEAD</div><div id="fb"></div><div id="wb"><div id="wf"></div></div>
+<div id="lr"><button id="bl" aria-label="Turn left">← LEFT</button><button id="br" aria-label="Turn right">RIGHT →</button></div></div>
+<div class="ov" id="gar"><h2>🔧 Garage</h2><p class="sm">Spend your ₹ on upgrades. ₹ is virtual and has no real-world value.</p><p><span class="chip" id="gw"></span></p><div id="garl"></div><button class="btn alt" id="gx">CLOSE</button></div>
+<div class="ov" id="pause"><h2>Paused</h2><p class="sm">The map stays hidden. Any open turn window resumes with the same time left.</p><button class="btn" id="resume">Resume</button><div id="rcd" style="font:900 60px Impact"></div></div>
+<section class="scr" id="done"><h2 style="color:var(--ok)">MISSION COMPLETE!</h2><p>Delivery successful!</p><p style="font-size:26px;font-weight:800;color:var(--ac)">Reward Earned: <span id="rw">₹500</span></p><p class="sm" id="brk"></p>
+<div id="dseq" class="row"></div><p><span class="chip" id="dw"></span> <span class="chip" id="dm"></span></p>
+<div class="row"><button class="btn" id="nx">NEXT DELIVERY</button><button class="btn alt" id="mm1">MAIN MENU</button></div><p class="sm">₹ is virtual in-game currency with no real-world value.</p>
+<p class="sm" style="font-size:11px">3D models: “Stylized Car” by Split Studios (Sketchfab); “The Old Curiosity Shop 2024” by artfletch and “Lowpoly City Street Pack” by haykel-shaba (Sketchfab, CC BY 4.0).</p></section>
+<section class="scr" id="over"><h2 style="color:var(--bad)" id="ot"></h2><p id="od"></p><canvas id="map2" width="320" height="230"></canvas><div id="oseq" class="row"></div>
+<div class="row"><button class="btn" id="rt">TRY AGAIN</button><button class="btn alt" id="mm2">MAIN MENU</button></div></section>
+<div id="nogl" class="scr"><h2>Can’t start 3D</h2><p class="sm">This game needs WebGL (hardware acceleration on) and a connection to load its graphics library. Check both, then retry.</p><button class="btn" onclick="location.reload()">Retry</button></div>
+<div id="dbg"></div>
+<script src="lib/three.min.js"></script>
+<script src="lib/GLTFLoader.js"></script>
+<script src="game.js"></script></body></html>
